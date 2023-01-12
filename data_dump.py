@@ -10,7 +10,7 @@ DATABASE_NAME = "mylib"
 COLLECTION_NAME = "books"
 
 if __name__=="__main__":
-    df = pd.read_csv(DATA_FILE_PATH)
+    df = pd.read_csv(DATA_FILE_PATH,low_memory=False)
     print(f"rows and column: {df.shape}")
     df.reset_index(drop=True,inplace=True)
 
