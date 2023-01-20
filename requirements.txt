@@ -1,2 +1,5 @@
-pymongo
 pandas
+pymongo==4.2.0
+PyYAML
+numpy
+-e .
