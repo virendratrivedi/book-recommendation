@@ -1,3 +1,44 @@
+from book.exception import BookException
+from book.logger import logging
+import os,sys
+
+
+def test_looger_and_exception():
+     try:
+          result=10/0
+          print(result)
+     except Exception as e:
+          raise BookException(e, sys)
+
+
+if __name__ == "__main__":
+     try:
+          test_looger_and_exception()
+     except Exception as e:
+          raise e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 import pymongo
 
 # Provide the mongodb localhost url to connect python to mongodb.
@@ -23,3 +64,4 @@ all_record = collection.find()
 # Printing all records present in the collection
 for idx, record in enumerate(all_record):
      print(f"{idx}: {record}")
+'''
