@@ -1,6 +1,7 @@
 from book.exception import BookException
 from book.logger import logging
 import os,sys
+from book.utils import get_collection_as_dataframe
 
 
 def test_looger_and_exception():
@@ -13,7 +14,8 @@ def test_looger_and_exception():
 
 if __name__ == "__main__":
      try:
-          test_looger_and_exception()
+          get_collection_as_dataframe(database_name='mylib', collection_name='books')
+
      except Exception as e:
           raise e
 
