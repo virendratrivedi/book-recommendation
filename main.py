@@ -1,7 +1,10 @@
 from book.exception import BookException
 from book.logger import logging
 import os,sys
+from book.enity import config_entity
 from book.utils import get_collection_as_dataframe
+from book.components.data_ingestion import DataIngestion
+
 
 
 def test_looger_and_exception():
@@ -13,8 +16,21 @@ def test_looger_and_exception():
 
 
 if __name__ == "__main__":
-     try:
-          get_collection_as_dataframe(database_name='mylib', collection_name='books')
+     try: 
+          training_pipeline_config = config_entity.TrainingPipelineConfig()
+          data_ingestion_config = config_entity.DataIngestionConfig(training_pipeline_config=training_pipeline_config)
+          #print(data_ingestion_config.to_dict())
+
+          data_ingestion = DataIngestion(data_ingestion_config=data_ingestion_config)
+          #data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+          print(data_ingestion.initiate_data_ingestion())
+
+
+          #mydf=get_collection_as_dataframe(database_name='mylib', collection_name='books')
+          #print("testshape:",mydf.shape)
+
+
+
 
      except Exception as e:
           raise e
