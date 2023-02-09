@@ -2,6 +2,8 @@ pandas==1.1.5
 pymongo==4.2.0
 PyYAML
 Flask
+dill==0.3.5.1
 python-dotenv==0.21.0
 numpy
+streamlit
 -e .

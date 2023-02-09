@@ -47,8 +47,6 @@ class DataIngestion:
             df_ratings.to_csv(path_or_buf=self.data_ingestion_config.feature_store_ratings_file_path,index=False,header=True)
 
 
-
-
             # Prepare artifact
 
             data_ingestion_artifact = artifact_entity.DataIngestionArtifact(books_file_path=self.data_ingestion_config.feature_store_book_file_path,
@@ -57,13 +55,6 @@ class DataIngestion:
                
             logging.info(f"Data ingestion artifact: {data_ingestion_artifact}")  
             return data_ingestion_artifact 
-
-
-
-
-
-            
-
 
         except Exception as e:
             raise BookException(e, sys)

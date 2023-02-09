@@ -4,6 +4,7 @@ import os,sys
 from book.enity import config_entity
 from book.utils import get_collection_as_dataframe
 from book.components.data_ingestion import DataIngestion
+from book.components.data_transformation import DataTransformation
 
 
 
@@ -22,8 +23,20 @@ if __name__ == "__main__":
           #print(data_ingestion_config.to_dict())
 
           data_ingestion = DataIngestion(data_ingestion_config=data_ingestion_config)
-          #data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
-          print(data_ingestion.initiate_data_ingestion())
+          data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+          #print(data_ingestion.initiate_data_ingestion())
+
+          # Data Tranformation 
+          data_transformation_config = config_entity.DataTransformationConfig(training_pipeline_config=training_pipeline_config)
+          data_transformation = DataTransformation(data_transformation_config=data_transformation_config,
+                             data_ingestion_artifact=data_ingestion_artifact)
+          print(data_transformation.initiate_data_transformation())
+
+
+
+          
+
+
 
 
           #mydf=get_collection_as_dataframe(database_name='mylib', collection_name='books')

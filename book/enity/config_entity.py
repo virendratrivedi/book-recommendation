@@ -3,9 +3,12 @@ from book.logger import logging
 from book.exception import BookException
 from datetime import datetime
 
+
 FILE_NAME_BOOKS = "books.csv"
 FILE_NAME_USERS = "users.csv"
 FILE_NAME_RATINGS = "ratings.csv"
+RATINGS_WITH_NAMES = "ratings_with_names.csv"
+POPULAR_PKL_FILE= "popular.pkl"
 
 
 
@@ -40,16 +43,22 @@ class DataIngestionConfig:
         try:
             return self.__dict__
         except Exception  as e:
-            raise SensorException(e,sys)    
+            raise SensorException(e,sys) 
 
 
-        
+class DataTransformationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        try:
+            self.data_transformation_dir=os.path.join(training_pipeline_config.artifact_dir,"data_transformation")
+            self.ratings_with_names_file_path=os.path.join(self.data_transformation_dir,RATINGS_WITH_NAMES)  
+            self.popular_pkl_file_path = os.path.join(self.data_transformation_dir,"pickle_files",POPULAR_PKL_FILE) 
+            #self.popular_pkl_dir = os.path.join(self.data_transformation_dir,"pickle_files") 
+            #self.popular_pkl_file_path=os.path.join(popular_pkl_dir,POPULAR_PKL_FILE)
             
-             
+            
+        except Exception as e:
+            raise BookException(e, sys)
 
-
-
-class DataTransformationConfig:...
 class ModelTrainingConfig:...
 class ModelEvaluationConfig:...
 class ModelPusherConfig:...
