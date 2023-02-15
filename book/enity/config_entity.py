@@ -9,6 +9,7 @@ FILE_NAME_USERS = "users.csv"
 FILE_NAME_RATINGS = "ratings.csv"
 RATINGS_WITH_NAMES = "ratings_with_names.csv"
 POPULAR_PKL_FILE= "popular.pkl"
+SIMILARITY_SCORE_FILE="similarity.npz"
 
 
 
@@ -59,6 +60,16 @@ class DataTransformationConfig:
         except Exception as e:
             raise BookException(e, sys)
 
-class ModelTrainingConfig:...
+class ModelTrainingConfig:
+    try:
+        def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+            self.model_train_dir=os.path.join(training_pipeline_config.artifact_dir,"model_training")
+            self.similarity_score_file_path=os.path.join(self.data_transformation_dir,SIMILARITY_SCORE_FILE)  
+            
+
+            
+    except Exception as e:
+        raise BookException(e, sys)
+
 class ModelEvaluationConfig:...
 class ModelPusherConfig:...

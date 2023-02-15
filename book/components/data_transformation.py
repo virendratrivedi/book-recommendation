@@ -13,7 +13,7 @@ class DataTransformation:
     def __init__(self,data_transformation_config:config_entity.DataTransformationConfig,
                     data_ingestion_artifact:artifact_entity.DataIngestionArtifact):
         try:
-            logging.info(f"{'>>'*20} Data Transformation {'<<'*20}")
+            #logging.info(f"{'>>'*20} Data Transformation {'<<'*20}")
             self.data_transformation_config=data_transformation_config
             self.data_ingestion_artifact=data_ingestion_artifact
 
@@ -25,7 +25,6 @@ class DataTransformation:
         try:
             logging.info(f"{'>>'*20} Data Transformation {'<<'*20}")
             #print(self.data_ingestion_artifact.books_file_path)
-            
            
             book_df=pd.read_csv(self.data_ingestion_artifact.books_file_path,low_memory=False)
             ratings_df=pd.read_csv(self.data_ingestion_artifact.ratings_file_path,low_memory=False)
@@ -58,8 +57,7 @@ class DataTransformation:
             rating_with_name_dir = os.path.dirname(self.data_transformation_config.ratings_with_names_file_path)
             os.makedirs(rating_with_name_dir,exist_ok=True)
 
-           
-            popularity_df.to_csv(path_or_buf=self.data_transformation_config.ratings_with_names_file_path,index=False,header=True)
+            ratings_with_names.to_csv(path_or_buf=self.data_transformation_config.ratings_with_names_file_path,index=False,header=True)
 
             
             popular_pkl_dir = os.path.dirname(self.data_transformation_config.popular_pkl_file_path)

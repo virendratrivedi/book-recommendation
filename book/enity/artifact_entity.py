@@ -11,7 +11,9 @@ class DataTransformationArtifact:
     ratings_with_names_path:str
     popular_model_path:str
 
+@dataclass
+class ModelTrainingArtifact:
+    similarity_score_path:str
 
-class ModelTrainingArtifact:...
 class ModelEvaluationArtifact:...
 class ModelPusherArtifact:...
